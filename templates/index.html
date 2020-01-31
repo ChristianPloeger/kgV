@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <style>
+            body {
+                background: rgb(86,112,235);
+                background: radial-gradient(circle, rgba(86,112,235,1) 0%, rgba(159,203,255,1) 100%);
+            }
+            p {
+                font-family: Roboto, Arial, Helvetica, sans-serif;
+                font-size: 1.3rem;
+            }
+            p.headline {
+                display: table;
+                margin: 3rem auto;
+                color: white;
+                letter-spacing: 3px;
+            }
+            input, button {
+                display: table;
+                margin: 3rem auto;
+                font-size: 1.1rem;
+                padding: .4rem;
+                font-family: Helvetica, Arial, sans-serif;
+                }
+            #wrapper {
+                padding-top: 3rem;
+            }
+            #btn {
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <form action = "http://localhost:1337/" method = "post">
+                {% if zahl1 %}
+                <p class="headline">Das berechnete kleinste gemeinsame Vielfache von {{zahl1}} und {{zahl2}} ist {{ergebnis}} <br> The calculated least common multiple of {{zahl1}} and {{zahl2}} is {{ergebnis}}</p>
+                <p class="headline">Bitte die Zahlen für eine neue Berechnung eingeben. <br> Please enter the numbers for a new calculation.</p>
+                {% else %}
+                <p class="headline">Das kleinste gemeinsame Vielfache ermitteln. <br>Find the least common multiple of two integers.<p>
+                <p class="headline">Bitte die Zahlen für die Berechnung eingeben. <br> Please enter the numbers for the calculation.</p>
+                {% endif %}
+            <p><input id="in1" placeholder="0" type = "number" name = "feld1" /></p>
+            <p><input id="in2" placeholder="0" type = "number" name = "feld2" /></p>
+            <button id="btn" type = "submit" value = "berechnen">berechnen / calculate</button>
+            </form>
+        </div>
+        <script>
+            i1 = document.getElementById('in1');
+            i2 = document.getElementById('in2');
+            document.getElementById('btn').onmouseover = function () {
+                if (i1.placeholder >= i1.value || i2.placeholder >= i2.value) {
+                    alert("Beide Eingabefelder müssen eine Ganzzahl enthalten die größer als 0 ist. / Both input fields must contain an integer that is greater than 0.")
+                }
+            }
+        </script>
+    </body>
+</html>
